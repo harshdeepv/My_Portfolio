@@ -208,3 +208,22 @@ body {
 .contact a:hover {
   color: #1d4ed8;
 }
+
+
+/* global utilities */
+.snap-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory; /* vertical snapping */
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;      /* reduce skipping on fast wheels */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 24px;
+}

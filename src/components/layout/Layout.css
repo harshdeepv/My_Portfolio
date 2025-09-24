@@ -1,0 +1,24 @@
+/* src/Layout/Layout.css */
+.content {
+  margin-left: 72px;                /* match collapsed sidebar width */
+  min-height: 100vh;
+  transition: margin-left 0.25s ease;
+  /* Optional: make the home page a snap scroller by giving the container a class in that page */
+}
+
+/* Full-page snap utilities (used by pages) */
+.snap-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 24px;
+}

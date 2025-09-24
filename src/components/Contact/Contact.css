@@ -1,0 +1,22 @@
+/* src/components/Contact/Contact.css */
+.contact {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact h2 {
+  color: var(--link-color);
+  margin-bottom: 1rem;
+}
+.contact p {
+  font-size: 1.1rem;
+}
+.contact a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.contact a:hover {
+  color: #1d4ed8;
+}

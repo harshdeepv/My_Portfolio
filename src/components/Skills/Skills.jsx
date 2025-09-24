@@ -1,3 +1,5 @@
+import "./Skills.css";
+
 const skills = [
   "Java", "Spring Boot", "Hibernate", "ReactJS", "PostgreSQL",
   "MongoDB", "Apache Kafka", "Docker", "Jenkins", "CI/CD"

@@ -1,0 +1,27 @@
+/* src/components/Education/Education.css */
+.education {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.education h2 {
+  color: var(--link-color);
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.education .entry {
+  background: var(--card-color);
+  color: var(--text-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.education .entry:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+.education .entry h3 {
+  color: var(--link-color);
+  margin: 0 0 0.5rem 0;
+}

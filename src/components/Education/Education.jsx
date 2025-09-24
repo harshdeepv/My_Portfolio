@@ -1,3 +1,5 @@
+import "./Education.css";
+
 export default function Education() {
   return (
     <section id="education" className="education">

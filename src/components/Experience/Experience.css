@@ -1,0 +1,32 @@
+/* src/components/Experience/Experience.css */
+.experience {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.experience h2 {
+  color: var(--link-color);
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.experience .item {
+  background: var(--card-color);
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.experience .item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+.experience .item h3 {
+  color: var(--link-color);
+  margin: 0 0 0.5rem 0;
+}
+.experience .item ul {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0;
+  line-height: 1.6;
+}

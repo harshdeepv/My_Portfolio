@@ -1,18 +1,19 @@
+import "hover.css/css/hover-min.css";
 import "./Experience.css";
 
 export default function Experience() {
   return (
-    <section id="experience" className="experience">
+    <section id="experience" className="experience hvr-grow">
       <h2>Work Experience</h2>
       <div>
         <h3>Tattva Foundation – Full Stack Developer</h3>
         <p><i>Lucknow | Nov 2024 – Aug 2025</i></p>
-        <ul>
-          <li>Developed REST APIs & microservices using Spring Boot.</li>
-          <li>Optimized PostgreSQL schemas and integrated MongoDB workflows.</li>
-          <li>Integrated Kafka for event-driven communication.</li>
-          <li>Containerized apps with Docker & CI/CD pipelines (Jenkins).</li>
-        </ul>
+        <p>
+          Developed REST APIs & microservices using Spring Boot.<br />
+          Optimized PostgreSQL schemas and integrated MongoDB workflows.<br />
+          Integrated Kafka for event-driven communication.<br />
+          Containerized apps with Docker & CI/CD pipelines (Jenkins).
+        </p>
       </div>
       <div>
         <h3>Riziliant Technologies – Intern</h3>

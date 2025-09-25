@@ -1,4 +1,6 @@
-/* ==== Global Theme ==== */
+/* ===========================
+   GLOBAL THEME
+=========================== */
 :root {
   --bg-light: #f9fafb;
   --text-light: #222;
@@ -9,6 +11,8 @@
   --text-dark: #f1f5f9;
   --card-dark: #334155;
   --link-dark: #38bdf8;
+
+  --accent-color: #f43f5e;
 }
 
 .App.light {
@@ -33,7 +37,9 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* ==== Navbar ==== */
+/* ===========================
+   NAVBAR
+=========================== */
 .navbar {
   background: var(--card-color);
   padding: 1rem 2rem;
@@ -44,14 +50,38 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  height: 80px;
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
+/* Shift page down when hovering navbar */
+.navbar:hover {
+  height: 120px; /* increase height on hover */
+}
+
+/* Push content below navbar */
+.snap-container {
+  scroll-padding-top: 80px; /* default navbar height */
+  transition: scroll-padding-top 0.3s ease;
+}
+
+/* Update scroll padding dynamically when navbar expands */
+.navbar:hover ~ .snap-container {
+  scroll-padding-top: 120px; /* match navbar hover height */
+}
+
+/* Navbar links and theme toggle remain the same */
 .navbar h1 {
   font-size: 1.5rem;
   color: var(--link-color);
   font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.navbar:hover h1 {
+  transform: scale(1.05); /* slight logo zoom on hover */
 }
 
 .navbar ul {
@@ -60,6 +90,11 @@ body {
   gap: 1.5rem;
   margin: 0;
   padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.navbar:hover ul {
+  transform: translateY(10px); /* shift links down a bit */
 }
 
 .navbar a {
@@ -82,29 +117,18 @@ body {
   background: var(--link-color);
   color: white;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .theme-toggle:hover {
   background: #1d4ed8;
+  transform: translateY(3px); /* subtle button shift */
 }
 
-/* ==== Page Content ==== */
-.page-content {
-  margin-top: 80px; /* below navbar */
-  padding: 2rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeIn 0.5s ease-in;
-}
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* ==== Hero Section ==== */
+/* ===========================
+   HERO SECTION
+=========================== */
 .hero {
   text-align: center;
   padding: 6rem 2rem;
@@ -138,92 +162,56 @@ body {
   transform: translateY(-3px);
 }
 
-/* ==== Skills Grid ==== */
-.skills h2, .projects h2, .education h2, .experience h2, .contact h2, .about h2 {
+/* ===========================
+   TYPOGRAPHY / HEADINGS
+=========================== */
+h2 {
   color: var(--link-color);
   margin-bottom: 1.5rem;
   text-align: center;
   font-size: 2rem;
 }
 
-.skill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
+/* ===========================
+   GLOBAL ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.skill {
-  background: var(--card-color);
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: 600;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+/* ===========================
+   PAGE CONTENT WRAPPER
+=========================== */
+.page-content {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in;
 }
 
-.skill:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* ==== Experience, Projects, Education Cards ==== */
-.experience div, .projects div, .education div {
-  background: var(--card-color);
-  margin-bottom: 1.5rem;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.experience div:hover, .projects div:hover, .education div:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-}
-
-.experience h3, .projects h3, .education h3 {
-  color: var(--link-color);
-  margin-bottom: 0.5rem;
-}
-
-.experience ul, .projects ul {
-  padding-left: 1.2rem;
-  text-align: left;
-}
-
-/* ==== Contact ==== */
-.contact p, .contact a {
-  text-align: center;
-  font-size: 1.1rem;
-}
-
-.contact a {
-  color: var(--link-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.contact a:hover {
-  color: #1d4ed8;
-}
-
-
-/* global utilities */
+/* ===========================
+   SNAP CONTAINER / SECTIONS
+   (keep minimal, rest in home.css)
+=========================== */
 .snap-container {
-  height: 100vh;
   overflow-y: auto;
-  scroll-snap-type: y mandatory; /* vertical snapping */
+  scroll-behavior: smooth;
 }
 
 .snap-section {
-  height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;      /* reduce skipping on fast wheels */
+  min-height: 100vh;
+  padding: 4rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  padding: 24px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .hero { padding: 4rem 1.5rem; }
+  .snap-section { padding: 3rem 1.5rem; }
+  .navbar { padding: 0.75rem 1.5rem; height: 72px; line-height: 72px; }
 }

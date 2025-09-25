@@ -1,27 +1,72 @@
 /* src/components/Education/Education.css */
 .education {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  border-radius: 16px;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2563eb, #38bdf8, #9333ea, #f43f5e);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
+
+/* Glass-like overlay */
+.education::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--card-color);
+  opacity: 0.85;
+  border-radius: 16px;
+  z-index: -1;
+}
+
 .education h2 {
   color: var(--link-color);
   text-align: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  animation: slideDown 0.6s ease-out;
 }
+
+/* Each education entry as a floating card */
 .education .entry {
-  background: var(--card-color);
+  background: #ffffff;
   color: var(--text-color);
   padding: 1.25rem 1.5rem;
   border-radius: 12px;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  text-align: center; /* ✅ center-align entry content */
+  cursor: pointer;
 }
+
 .education .entry:hover {
+  background: #ffd9b3;
+  color: #1f2937;
   transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
 }
+
 .education .entry h3 {
   color: var(--link-color);
   margin: 0 0 0.5rem 0;
+}
+
+/* ==== Animations ==== */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

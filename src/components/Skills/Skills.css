@@ -1,29 +1,100 @@
-/* src/components/Skills/Skills.css */
+/* Skills container: allow tooltips to overflow; keep rounded glass look */
 .skills {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-}
+  padding: 2rem;
+
+  position: relative;
+  z-index: 0;                 /* don’t create a high stacking context */
+  overflow: visible;          /* let tooltips escape the container */
+  background: linear-gradient(135deg, #2563eb, #38bdf8, #9333ea, #f43f5e);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  border-radius: 16px;
+} /* tooltips won’t be clipped by container overflow [web:59][web:68] */
+
+/* Glass overlay stays rounded and behind content, but can be clipped safely */
+.skills::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--card-color);
+  opacity: 0.85;
+  border-radius: inherit;
+  z-index: -1;                /* behind all content so it won’t cover tooltips */
+} /* keep the glass effect without affecting tooltip layering [web:64] */
+
+/* Heading remains above overlay naturally */
 .skills h2 {
+  position: relative;         /* ensures it’s above ::before */
+  z-index: 1;
   color: var(--link-color);
   text-align: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
 }
-.skill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+/* Wrapping row */
+.skill-row {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  padding: 1rem 0;
+  overflow: visible;          /* don’t clip tooltips at row edge */
 }
+
+/* Cards: ensure each card establishes a stacking context above siblings’ text */
 .skill {
-  background: var(--card-color);
+  position: relative;
+  z-index: 1;                 /* stack above sibling content like headings */
+  flex: 1 1 160px;
+  min-width: 160px;
+  background: #ffffff;
   color: var(--text-color);
-  padding: 1rem;
-  border-radius: 10px;
+  padding: 1.25rem;
+  border-radius: 12px;
   text-align: center;
   font-weight: 600;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+  overflow: visible;          /* allow tooltip to overflow the card */
 }
+
 .skill:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  background: #ffd9b3;
+  color: #1f2937;
+  transform: translateY(-2px);
+}
+
+/* Tooltip: place above the card title, above everything else */
+.skill-desc {
+  position: absolute;
+  bottom: calc(100% + 10px);  /* show ABOVE the card */
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 260px;
+  padding: 1rem;
+
+  background: #fff4e0;        /* cream background */
+  color: #111827;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  line-height: 1.5;
+  white-space: normal;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 999;               /* ensure it overlays nearby content */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+} /* absolute tooltip above, high z-index within non-restrictive context [web:64][web:72] */
+
+.skill:hover .skill-desc {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px); /* slight lift */
+  pointer-events: auto;
 }

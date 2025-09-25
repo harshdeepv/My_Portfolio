@@ -1,8 +1,9 @@
+import "hover.css/css/hover-min.css";
 import "./Education.css";
 
 export default function Education() {
   return (
-    <section id="education" className="education">
+    <section id="education" className="education hvr-grow">
       <h2>Education</h2>
       
       <div>

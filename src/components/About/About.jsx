@@ -1,8 +1,9 @@
+import "hover.css/css/hover-min.css";
 import "./About.css";
 
 export default function About() {
   return (
-    <section id="about" className="about">
+    <section id="about" className="about hvr-grow">
       <h2>About Me</h2>
       <p>
         I’m <strong>Harsh Deep Verma</strong>, a Full Stack Developer with hands-on experience 

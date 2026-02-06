@@ -23,7 +23,7 @@ export default function Home() {
   useEffect(() => setMenuOpen(false), [location]);
 
   useEffect(() => {
-    const sections = document.querySelectorAll(".snap-section, .footer");
+    const sections = document.querySelectorAll(".snap-section");
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("visible")),
       { threshold: 0.2 }
@@ -101,15 +101,24 @@ useEffect(() => {
 
       {/* Topbar hides when nav-open */}
       <header className={`topbar ${menuOpen ? "hidden" : ""}`} role="banner">
-        <button
-          className="hamburger"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-controls="sidebar"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((v) => !v)}
-        >
-          <span className="bar" /><span className="bar" /><span className="bar" />
-        </button>
+        <div className="topbar-left">
+          <button
+            className="hamburger"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-controls="sidebar"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span className="bar" /><span className="bar" /><span className="bar" />
+          </button>
+          <div className="topbar-brand">
+            <span className="brand-mark">HD</span>
+            <div>
+              <div className="brand-name">Harsh Deep Verma</div>
+              <div className="brand-role">Full Stack Developer</div>
+            </div>
+          </div>
+        </div>
 
         {/* Collapsible Search: only icon + expanding input; no visible submit */}
         <form
@@ -211,14 +220,7 @@ useEffect(() => {
         <section id="experience" className="snap-section"><Experience /></section>
         <section id="projects" className="snap-section"><Projects /></section>
         <section id="education" className="snap-section"><Education /></section>
-
-        <footer className="footer">
-          <div className="footer-content">
-            <div className="contact-section">
-              <Contact />
-            </div>
-          </div>
-        </footer>
+        <section id="contact" className="snap-section"><Contact /></section>
       </main>
     </div>
   );

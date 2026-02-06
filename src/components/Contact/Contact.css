@@ -1,115 +1,52 @@
-/* 🌟 Contact Section inside Footer */
 .contact {
-  width: 100%;
-  height: 150px;
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  color: var(--text-color);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-
-  /* Gradient background */
-  background: linear-gradient(135deg, #2563eb, #38bdf8, #9333ea, #f43f5e);
-  background-size: 300% 300%;
-  animation: gradientBG 12s ease infinite;
-
-  /* Softer shadow so it blends with fixed footer */
-  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-
-  font-size: 0.9rem;
-
-  /* Ensure it never exceeds footer width */
-  max-width: 100%;
-  box-sizing: border-box;
+  display: grid;
+  gap: 1.6rem;
 }
 
-/* Glass overlay */
-.contact::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--card-color);
-  opacity: 0.85;
-  border-radius: inherit;
-  z-index: -1;
+.contact-header p {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
 }
 
-/* Wrap content tighter so it doesn’t stretch too wide */
-.contact .content-wrap {
-  max-width: 800px;
-  margin: 0 auto;
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
 }
 
-/* Title */
-.contact h2 {
-  color: var(--link-color);
-  margin-bottom: 0.5rem;
-  line-height: 0.45;
-  text-align: center;
-  font-size: 1.50rem;
-  font-weight: 700;
-  animation: slideDown 0.5s ease-out;
-}
-
-/* Paragraphs */
-.contact p {
-  font-size: 0.9rem;
-  margin-bottom: 0.35rem;
-  line-height: 0.45;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fadeUp 0.6s ease forwards;
-}
-.contact p:nth-of-type(1) { animation-delay: 0.2s; }
-.contact p:nth-of-type(2) { animation-delay: 0.4s; }
-
-/* Links */
-.contact a {
-  color: var(--link-color);
+.contact-card {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-.contact a.hvr-grow {
-  display: inline-block;
-  padding: 0.15rem 0.45rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.6);
-  line-height: 1.2;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: var(--ink);
 }
 
-/* Footer fine print */
-.contact .footer-bottom {
-  margin-top: 0.5rem;
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
+}
+
+.contact-label {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.contact-value {
+  font-weight: 600;
+  color: var(--ink);
+  word-break: break-word;
+}
+
+.contact-footer {
+  text-align: center;
   font-size: 0.85rem;
-  opacity: 0.9;
-}
-
-/* Large screens (don’t let contact get too tall or too wide) */
-@media (min-width: 1280px) {
-  .contact {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    max-width: 1200px;  /* prevent overflow on ultrawide */
-  }
-}
-
-/* Ultra-wide screens like Pro Display XDR */
-@media (min-width: 2000px) {
-  .contact {
-    max-width: 1400px; /* matches footer-content cap */
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .contact {
-    max-width: 100%;
-    padding: 0.75rem 0.9rem;
-  }
-  .contact h2 { font-size: 1.1rem; }
-  .contact p { font-size: 0.9rem; }
-  .contact .footer-bottom { font-size: 0.8rem; }
+  color: var(--muted);
 }

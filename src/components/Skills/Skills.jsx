@@ -2,29 +2,51 @@
 import "hover.css/css/hover-min.css";
 import "./Skills.css";
 
-const skills = [
-  { name: "Java", desc: "Strong OOP concepts, collections, multithreading, and backend development." },
-  { name: "Spring Boot", desc: "Built REST APIs, microservices, and integrated security & data layers." },
-  { name: "Hibernate", desc: "ORM expertise with JPA, query optimization, and entity mapping." },
-  { name: "ReactJS", desc: "Developed responsive UIs with hooks, router, and state management." },
-  { name: "PostgreSQL", desc: "Designed relational schemas, queries, and transactions." },
-  { name: "MongoDB", desc: "Used NoSQL for high-performance and flexible schema applications." },
-  { name: "Apache Kafka", desc: "Implemented event-driven systems with message streaming." },
-  { name: "Docker", desc: "Containerized applications for deployment and CI/CD pipelines." },
-  { name: "Jenkins", desc: "Setup CI/CD pipelines with automated builds and deployments." },
-  { name: "CI/CD", desc: "End-to-end DevOps practices for faster and reliable delivery." }
+const skillGroups = [
+  {
+    title: "Backend & APIs",
+    desc: "Designing REST services and scalable microservices with clean architecture.",
+    skills: ["Java", "Spring Boot", "Hibernate", "REST APIs"],
+  },
+  {
+    title: "Data & Storage",
+    desc: "Relational and NoSQL modeling with performance-focused queries.",
+    skills: ["PostgreSQL", "MongoDB", "Schema Design", "Query Optimization"],
+  },
+  {
+    title: "Frontend",
+    desc: "Building responsive interfaces and smooth UX flows.",
+    skills: ["ReactJS", "Hooks", "Routing", "State Management"],
+  },
+  {
+    title: "Event Systems",
+    desc: "Streaming and async messaging for resilient workflows.",
+    skills: ["Apache Kafka", "Async Processing", "Event-Driven"],
+  },
+  {
+    title: "Delivery & DevOps",
+    desc: "Automated releases with containers and CI/CD pipelines.",
+    skills: ["Docker", "Jenkins", "CI/CD", "Automation"],
+  },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="skills hvr-grow">
-      <h2>Technical Skills</h2>
-      <div className="skill-row">
-        {skills.map((s, i) => (
-          <div key={i} className="skill">
-            <span className="skill-name">{s.name}</span>
-            <div className="skill-desc">{s.desc}</div>
-          </div>
+    <section className="skills section-card hvr-grow">
+      <h2 className="section-title">Technical Skills</h2>
+      <div className="skills-grid">
+        {skillGroups.map((group) => (
+          <article key={group.title} className="skill-group">
+            <h3>{group.title}</h3>
+            <p>{group.desc}</p>
+            <div className="skill-chips">
+              {group.skills.map((skill) => (
+                <span key={skill} className="skill-chip">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </article>
         ))}
       </div>
     </section>

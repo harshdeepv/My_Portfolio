@@ -1,80 +1,57 @@
-/* src/components/Experience/Experience.css */
 .experience {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 2.5rem;
-  border-radius: 16px;
-  color: var(--text-color);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  background: linear-gradient(135deg, #2563eb, #38bdf8, #9333ea, #f43f5e);
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  display: grid;
+  gap: 1.5rem;
 }
 
-/* Floating glass-like overlay */
-.experience::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--card-color);
-  opacity: 0.85;
-  border-radius: 16px;
-  z-index: -1;
+.experience-list {
+  display: grid;
+  gap: 1.2rem;
 }
 
-.experience h2 {
-  color: var(--link-color);
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  font-weight: 700;
-  animation: slideDown 0.6s ease-out;
+.experience-card {
+  padding: 1.4rem 1.6rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
-/* Each item as a floating card */
-.experience .item {
-  background: #ffffff;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  padding: 1.25rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-  text-align: center; /* ✅ align text in center */
-  cursor: pointer;
+.experience-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
 }
 
-.experience .item:hover {
-  background: #ffd9b3;
-  color: #1f2937;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+.experience-card h3 {
+  margin: 0;
+  font-family: var(--font-heading);
 }
 
-.experience .item h3 {
-  color: var(--link-color);
-  margin: 0 0 0.5rem 0;
+.experience-company {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
 }
 
-/* List inside each item */
-.experience .item ul {
-  padding-left: 0;   /* ✅ remove left indent since text is centered */
-  margin: 0.5rem 0 0;
+.experience-meta {
+  text-align: right;
+  display: grid;
+  gap: 0.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.experience-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
   line-height: 1.6;
-  list-style: none;  /* ✅ no bullets for center alignment */
 }
 
-/* ==== Animations ==== */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+@media (max-width: 720px) {
+  .experience-meta {
+    text-align: left;
+  }
 }

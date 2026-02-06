@@ -1,72 +1,38 @@
-/* src/components/Education/Education.css */
 .education {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.education-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.education-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
   border-radius: 16px;
-  color: var(--text-color);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  background: linear-gradient(135deg, #2563eb, #38bdf8, #9333ea, #f43f5e);
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 22px rgba(15, 23, 42, 0.08);
+  flex-wrap: wrap;
 }
 
-/* Glass-like overlay */
-.education::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--card-color);
-  opacity: 0.85;
-  border-radius: 16px;
-  z-index: -1;
+.education-card h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
 }
 
-.education h2 {
-  color: var(--link-color);
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  font-weight: 700;
-  animation: slideDown 0.6s ease-out;
+.education-program {
+  margin: 0;
+  color: var(--muted);
 }
 
-/* Each education entry as a floating card */
-.education .entry {
-  background: #ffffff;
-  color: var(--text-color);
-  padding: 1.25rem 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-  text-align: center; /* ✅ center-align entry content */
-  cursor: pointer;
-}
-
-.education .entry:hover {
-  background: #ffd9b3;
-  color: #1f2937;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-
-.education .entry h3 {
-  color: var(--link-color);
-  margin: 0 0 0.5rem 0;
-}
-
-/* ==== Animations ==== */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.education-period {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
